@@ -6,28 +6,25 @@ $( document ).ready(function() {
   $(".search").bind('input propertychange',function () {
     var search_query = $(".search").val();
     var str = $( ".type" ).val();
-    var couter = 0;
-    var first_entry = str.toLowerCase().indexOf(search_query,couter);
-    if (first_entry >= 0){
-      var result = str;
-      result = recursion_replace(couter,result,search_query)
-      $( ".text" ).html( result );
+    var counter = 0;
+    var array_of_entries = [];
+    if (search_query != "" ){
+      do {
+        var entry = str.toLowerCase().indexOf(search_query,counter);
+        counter=entry+1;
+        array_of_entries.push(entry);
+      } while (entry!=-1)
+      array_of_entries.pop();
+      console.log(array_of_entries);
+      for (var i = array_of_entries.length-1; i >= 0; i--) {
+        var query_in_str = str.substr(array_of_entries[i], search_query.length);
+        var replacement = "<span class='yellow'>" + query_in_str + "</span>";
+        str = str.substr(0, array_of_entries[i]) + replacement + str.substr(array_of_entries[i] + search_query.length);
+      }
+      $( ".text" ).html( str );
+    }
+    else {
+      $( ".text" ).html( str );
     }
   });
 });
-
-function recursion_replace(num, result, query) {
-  // console.log(num);
-  var entry = result.toLowerCase().indexOf(query,num);
-  if (entry >=0) {
-    // console.log(entry);
-    var query_in_str = result.substr(entry, query.length);
-    var replacement = "<span class='yellow'>" + query_in_str + "</span>";
-    num = replacement.length;
-    console.log(num);
-    return result = recursion_replace(num, result.replace(query_in_str, replacement), query);
-  }
-  else {
-    return result;
-  }
-}
