@@ -9,13 +9,22 @@ $(document).ready(function() {
     let item = "<li>" + text + "<span class='delete_item' id='" + id +  "'>×</span></li>";
     return item;
   }
-  function addItem(item) {
+  function addItem(item,id) {
     $(".list").append(item);
+    $("#" + id).click(function() {
+      for(var i = 0; i < state_obj.length; i++) {
+        if(state_obj[i].id == id) {
+          state_obj.splice(i,1);
+          doPushState(state_obj);
+        }
+      }
+     $(this).parent().remove();
+    });
   }
   function createList(state_obj) {
     for(var i=0; i<state_obj.length; i++){
       // $(".list").append(state_obj[i].item);
-      addItem(state_obj[i].item);
+      addItem(state_obj[i].item,state_obj[i].id);
     }
   }
   $(window).on('popstate', function(event) {
@@ -32,17 +41,7 @@ $(document).ready(function() {
     $(".item").val("");
     let item = getItem(text,id);
     state_obj.push({ id: id, text: text, item: item });
-    addItem(item);
+    addItem(item,id);
     doPushState(state_obj);
-
-    $("#" + id).click(function() {
-      for(var i = 0; i < state_obj.length; i++) {
-        if(state_obj[i].id == id) {
-          state_obj.splice(i,1);
-          doPushState(state_obj);
-        }
-      }
-     $(this).parent().remove();
-    });
   });
 });
