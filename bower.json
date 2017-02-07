@@ -1,0 +1,22 @@
+{
+  "name": "jquery-tasks",
+  "homepage": "https://github.com/annandr12/jquery-tasks",
+  "authors": [
+    "Anna Andriushkina <annandr12@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "magnific-popup": "^1.1.0",
+    "flexboxgrid": "^6.3.2"
+  }
+}
