@@ -23,7 +23,6 @@ $(document).ready(function() {
   }
   function createList(state_obj) {
     for(var i=0; i<state_obj.length; i++){
-      // $(".list").append(state_obj[i].item);
       addItem(state_obj[i].item,state_obj[i].id);
     }
   }
@@ -34,7 +33,7 @@ $(document).ready(function() {
       $("ul").empty();
       createList(state);
     }
-});
+  });
   $(".add_item").click(function() {
     let id = Date.now();
     let text = $(".item").val();
