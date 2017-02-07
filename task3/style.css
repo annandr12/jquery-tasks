@@ -1,18 +1,21 @@
 .content {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 .item {
-  margin: 0.1rem 0;
-  max-height:
+    margin: 0.1rem 0;
+    max-height:
 }
+
 .image {
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 200px;
-  display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    display: block;
 }
+
 .galery {
-  align-items: stretch;
+    align-items: stretch;
 }
