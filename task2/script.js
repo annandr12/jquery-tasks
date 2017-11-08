@@ -1,10 +1,11 @@
+/*jshint esversion: 6 */
 $(document).ready(function() {
   let state_obj = [];
   function doPushState(state) {
-    var title = "",
+    let title = "",
         path  = "";
     history.pushState(state, title, path);
-  };
+  }
   function getItem(text,id) {
     let item = "<li>" + text + "<span class='delete_item' id='" + id +  "'>×</span></li>";
     return item;
@@ -12,7 +13,7 @@ $(document).ready(function() {
   function addItem(item,id) {
     $(".list").append(item);
     $("#" + id).click(function() {
-      for(var i = 0; i < state_obj.length; i++) {
+      for(let i = 0; i < state_obj.length; i++) {
         if(state_obj[i].id == id) {
           state_obj.splice(i,1);
           doPushState(state_obj);
@@ -22,12 +23,12 @@ $(document).ready(function() {
     });
   }
   function createList(state_obj) {
-    for(var i=0; i<state_obj.length; i++){
+    for(let i=0; i<state_obj.length; i++){
       addItem(state_obj[i].item,state_obj[i].id);
     }
   }
   $(window).on('popstate', function(event) {
-    var state = event.originalEvent.state;
+    let state = event.originalEvent.state;
     if (state) {
       state_obj = state;
       $("ul").empty();
